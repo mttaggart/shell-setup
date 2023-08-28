@@ -32,7 +32,7 @@ install_alacritty() {
 
 install_nerdfont() {
 	echo "[+] Installing NerdFont"
-	wget -O ~/tmp/scp.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip
+	wget -O /tmp/scp.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip
 	mkdir /tmp/scp
 	unzip /tmp/scp.zip -d /tmp/scp '*.ttf'
 	sudo mkdir /usr/share/fonts/saucecode-pro
