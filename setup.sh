@@ -23,6 +23,8 @@ install_alacritty() {
 	cargo install alacritty
 	echo "[+] Copying Desktop File"
 	sudo cp ./Alacritty/Alacritty.desktop /usr/share/applications/
+	echo "[+] Copying icon"
+	sudo cp ./Alacritty/Alacritty.svg /usr/share/icons/hicolor/scalable/apps/
 	echo "[+] Copying Config"
 	mkdir ~/.config/alacritty
 	cp ./Alacritty/*.yml ~/.config/alacritty/
