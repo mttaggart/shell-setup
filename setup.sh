@@ -4,7 +4,7 @@
 
 install_apt_packages() {
 	echo "[+] Installing apt packages"
-	sudo apt update && sudo apt install -y fish vim-gtk3 tmux terminator cmake gcc pkg-config
+	sudo apt update && sudo apt install -y fish vim-gtk3 tmux terminator cmake gcc pkg-config fontconfig libfontconfig1-dev
 }
 
 install_rust() {
@@ -33,10 +33,9 @@ install_alacritty() {
 install_nerdfont() {
 	echo "[+] Installing NerdFont"
 	wget -O /tmp/scp.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip
-	mkdir /tmp/scp
 	unzip /tmp/scp.zip -d /tmp/scp '*.ttf'
 	sudo mkdir /usr/share/fonts/saucecode-pro
-	sudo mv /tmp/*.ttf /usr/share/fonts/saucecode-pro
+	sudo mv /tmp/scp/*.ttf /usr/share/fonts/saucecode-pro
 	rm -rf /tmp/scp
 	sudo fc-cache -s -f
 }
