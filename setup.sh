@@ -4,7 +4,7 @@
 
 install_apt_packages() {
 	echo "[+] Installing apt packages"
-	sudo apt update && sudo apt install -y fish vim-gtk3 tmux terminator
+	sudo apt update && sudo apt install -y fish vim-gtk3 tmux terminator cmake gcc
 }
 
 install_rust() {
