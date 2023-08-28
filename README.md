@@ -16,5 +16,7 @@ My [Neovim config](https://github.com/mttaggart/neovim-config) is also available
 ## Quickstart
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/mttaggart/shell-setup/main/setup.sh | bash
+git clone https://github.com/mttaggart/shell-setup
+cd shell-setup
+./setup.sh
 ```
