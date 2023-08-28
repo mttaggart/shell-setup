@@ -1,2 +1,20 @@
-# shell-setup
-Repo for automating shell config on new machines
+# Shell Setup
+
+This is where I keep my configs for all the custom terminal stuff I do. Included are configurations for:
+
+- Fish
+- Terminator
+- Alacritty
+- Tmux
+- Vim
+- Neovim
+
+You, dear reader, are welcome to take these configs and use/modify them as you see fit, but pull requests are **not open**. This is my jawn, and I will change it as I see fit.
+
+My [Neovim config](https://github.com/mttaggart/neovim-config) is also available.
+
+## Quickstart
+
+```bash
+curl -sSf https://raw.githubusercontent.com/mttaggart/shell-setup/main/setup.sh | bash
+```
