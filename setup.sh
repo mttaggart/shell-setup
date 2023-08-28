@@ -15,7 +15,7 @@ install_rust() {
 }
 
 install_alacritty() {
-	if [ ! -f ~/.cargo/bin/rustc ]; then
+	if [ ! -d ~/.cargo ]; then
 		echo "[!] Rust not found! Installing..."
 		install_rust
 	fi
