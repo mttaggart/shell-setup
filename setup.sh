@@ -69,6 +69,12 @@ configure_tmux() {
 	echo "[+] Remember to press C-B+I to install!"
 }
 
+configure_terminator() {
+	echo "[+] Configuring Terminator"
+	mkdir ~/.config/terminator
+	cp ./Terminator/config ~/.config/Terminator/
+}
+
 install_neovim() {
 	# Optional Install NeoVim
 	echo "[?] Install Neovim? [Y/n]"
@@ -95,4 +101,5 @@ install_nerdfont
 configure_starship
 configure_vim
 configure_tmux
+configure_terminator
 install_neovim

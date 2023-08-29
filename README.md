@@ -13,6 +13,8 @@ You, dear reader, are welcome to take these configs and use/modify them as you s
 
 My [Neovim config](https://github.com/mttaggart/neovim-config) is also available.
 
+Colors are from the [Dracula Theme](https://draculatheme.com), of course.
+
 ## Quickstart
 
 ```bash
