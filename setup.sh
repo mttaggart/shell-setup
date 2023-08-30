@@ -45,6 +45,11 @@ install_starship() {
 	curl -sS https://starship.rs/install.sh | sh
 }
 
+configure_fish() {
+	mkdir ~/.config/fish
+	cp ./Fish/* ~/.config/fish
+}
+
 configure_starship() {
 	echo "[+] Configuring Starship"
 	cp ./Starship/starship.toml ~/.config/starship.toml
@@ -98,6 +103,7 @@ install_apt_packages
 install_alacritty
 install_starship
 install_nerdfont
+configure_fish
 configure_starship
 configure_vim
 configure_tmux
