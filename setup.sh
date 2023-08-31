@@ -77,7 +77,7 @@ configure_tmux() {
 configure_terminator() {
 	echo "[+] Configuring Terminator"
 	mkdir ~/.config/terminator
-	cp ./Terminator/config ~/.config/Terminator/
+	cp ./Terminator/config ~/.config/terminator/
 }
 
 install_neovim() {
@@ -89,7 +89,7 @@ install_neovim() {
 		wget -O /tmp/nvim.tar.gz 'https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz'
 		cd /tmp
 		tar zxvf nvim.tar.gz
-		sudo cp -R nvim/* /usr/local/
+		sudo cp -R nvim-linux64/* /usr/local/
 		rm -rf nvim*
 		cd -
 		echo "[+] Installing Neovim config"
