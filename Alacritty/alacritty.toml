@@ -1,0 +1,14 @@
+import = ["./dracula.yml"]
+
+[font]
+size = 8.0
+
+[font.normal]
+family = "SauceCodePro Nerd Font"
+style = "Regular"
+
+[window]
+opacity = 1.0
+
+[window.padding]
+x = 5

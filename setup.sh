@@ -27,7 +27,7 @@ install_alacritty() {
 	sudo cp ./Alacritty/Alacritty.svg /usr/share/icons/hicolor/scalable/apps/
 	echo "[+] Copying Config"
 	mkdir ~/.config/alacritty
-	cp ./Alacritty/*.yml ~/.config/alacritty/
+	cp ./Alacritty/*.toml ~/.config/alacritty/
 }
 
 install_nerdfont() {
