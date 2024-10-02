@@ -45,6 +45,10 @@ install_starship() {
 	curl -sS https://starship.rs/install.sh | sh
 }
 
+install_atuin() {
+	curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+}
+
 configure_fish() {
 	mkdir ~/.config/fish
 	cp ./Fish/* ~/.config/fish
@@ -102,6 +106,7 @@ install_neovim() {
 install_apt_packages
 install_alacritty
 install_starship
+install_atuin
 install_nerdfont
 configure_fish
 configure_starship
