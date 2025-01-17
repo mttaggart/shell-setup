@@ -1,0 +1,15 @@
+[[language]]
+name = "python"
+language-servers = [ "pyright" ]
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman"]
+soft-wrap = { enable = true, wrap-indicator = ""}
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"

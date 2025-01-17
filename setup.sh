@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install Fish, Vim, TMux
+# Install Fish, Vim, TMux, Zellij, Helix
 
 install_apt_packages() {
 	echo "[+] Installing apt packages"
@@ -49,13 +49,68 @@ install_atuin() {
 	curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 }
 
+install_zellij() {
+	cargo install zellij
+	mkdir ~/.config/zellij
+	cp ./Zellij/config.kdl ~/.config/zellij/
+}
+
+
+install_helix() {
+	wget -O /tmp/hx.tar.gz https://github.com/helix-editor/helix/releases/download/25.01/helix-25.01-x86_64-linux.tar.xz
+	pushd /tmp
+	tar xzf hx.tar.gz
+	pushd helix*
+	mkdir ~/.config/helix
+	cp -R runtime ~/.config/helix
+	sudo cp hx /usr/local/bin
+	popd
+	rm -rf helix*
+	rm hx.tar.gz
+	popd
+}
+
+install_node() {
+	echo "[+] Installing NodeJS/NPM"
+	sudo apt install -y npm
+	sudo npm i -g n
+	sudo n latest
+}
+
+install_deno() {
+	echo "[+] Installing Deno"
+	curl -fsSL https://deno.land/install.sh | sh
+}
+
+install_language_servers() {
+	echo "[+] Installing Language Servers"
+	sudo npm i -g \
+		typescript \
+		typescript-language-server \
+		pyright \
+		bash-language-server \
+		dockerfile-language-server-nodejs \
+		@microsoft/compose-language-service
+	wget -O /tmp/marksman https://github.com/artempyanykh/marksman/releases/download/2024-12-18/marksman-linux-x64
+	chmod +x /tmp/marksman
+	sudo mv /tmp/marksman /usr/local/bin/
+	
+}
+
+configure_helix() {
+	echo "[+] Configuring Helix"
+	cp -R ./Helix/* ~/.config/helix/
+}
+
+
 configure_fish() {
+	echo "[+] Configuring Fish"
 	mkdir ~/.config/fish
 	cp ./Fish/* ~/.config/fish
 }
 
 configure_starship() {
-	echo "[+] Configuring Starship"
+	echo "[+] Configuring Starship"]
 	cp ./Starship/starship.toml ~/.config/starship.toml
 }
 
@@ -104,13 +159,19 @@ install_neovim() {
 }
 
 install_apt_packages
+install_node
+install_deno
 install_alacritty
 install_starship
 install_atuin
 install_nerdfont
+install_helix
+install_zellij
+install_language_servers
 configure_fish
 configure_starship
 configure_vim
 configure_tmux
 configure_terminator
+configure_helix
 install_neovim
