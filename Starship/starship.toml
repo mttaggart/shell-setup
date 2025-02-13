@@ -1,5 +1,5 @@
 format = """
-[  ](bg:#611bf9)\
+[  ](bg:#611bf9)\
 [](fg:#611bf9 bg:#bf0af9)\
 $directory\
 [](fg:#bf0af9 bg:#7346f9)\
