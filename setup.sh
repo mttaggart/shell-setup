@@ -2,9 +2,19 @@
 
 # Install Fish, Vim, TMux, Zellij, Helix
 
-install_apt_packages() {
-	echo "[+] Installing apt packages"
-	sudo apt update && sudo apt install -y fish vim-gtk3 tmux terminator cmake gcc pkg-config fontconfig libfontconfig1-dev
+install_dnf_packages() {
+	echo "[+] Installing dnf packages"
+	sudo dnf update && sudo dnf install -y \
+		fish \
+		vim-X11 \
+		helix \
+		tmux \
+		alacritty \
+		cmake \
+		gcc \
+		pkgconf-pkg-config \
+		fontconfig \
+		fontconfig-devel
 }
 
 install_rust() {
@@ -12,22 +22,6 @@ install_rust() {
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	echo 'set -x PATH $PATH ~/.cargo/bin'
 	export PATH=$PATH:~/.cargo/bin
-}
-
-install_alacritty() {
-	if [ ! -d ~/.cargo ]; then
-		echo "[!] Rust not found! Installing..."
-		install_rust
-	fi
-	echo "[+] Installing Alacritty"
-	cargo install alacritty
-	echo "[+] Copying Desktop File"
-	sudo cp ./Alacritty/Alacritty.desktop /usr/share/applications/
-	echo "[+] Copying icon"
-	sudo cp ./Alacritty/Alacritty.svg /usr/share/icons/hicolor/scalable/apps/
-	echo "[+] Copying Config"
-	mkdir ~/.config/alacritty
-	cp ./Alacritty/*.toml ~/.config/alacritty/
 }
 
 install_nerdfont() {
@@ -55,24 +49,9 @@ install_zellij() {
 	cp ./Zellij/config.kdl ~/.config/zellij/
 }
 
-
-install_helix() {
-	wget -O /tmp/hx.tar.gz https://github.com/helix-editor/helix/releases/download/25.01/helix-25.01-x86_64-linux.tar.xz
-	pushd /tmp
-	tar xzf hx.tar.gz
-	pushd helix*
-	mkdir ~/.config/helix
-	cp -R runtime ~/.config/helix
-	sudo cp hx /usr/local/bin
-	popd
-	rm -rf helix*
-	rm hx.tar.gz
-	popd
-}
-
 install_node() {
 	echo "[+] Installing NodeJS/NPM"
-	sudo apt install -y npm
+	sudo dnf install -y npm
 	sudo npm i -g n
 	sudo n latest
 }
@@ -101,7 +80,6 @@ configure_helix() {
 	echo "[+] Configuring Helix"
 	cp -R ./Helix/* ~/.config/helix/
 }
-
 
 configure_fish() {
 	echo "[+] Configuring Fish"
@@ -133,45 +111,17 @@ configure_tmux() {
 	echo "[+] Remember to press C-B+I to install!"
 }
 
-configure_terminator() {
-	echo "[+] Configuring Terminator"
-	mkdir ~/.config/terminator
-	cp ./Terminator/config ~/.config/terminator/
-}
 
-install_neovim() {
-	# Optional Install NeoVim
-	echo "[?] Install Neovim? [Y/n]"
-	read neovim_confirm
-	if [[ $neovim_confirm == "" ]] || [[ $neovim_confirm == "Y" ]] || [[ $neovim_confirm == "y" ]]; then
-		echo "[+] Installing Neovim"
-		wget -O /tmp/nvim.tar.gz 'https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz'
-		cd /tmp
-		tar zxvf nvim.tar.gz
-		sudo cp -R nvim-linux64/* /usr/local/
-		rm -rf nvim*
-		cd -
-		echo "[+] Installing Neovim config"
-		git clone https://github.com/mttaggart/neovim-config ~/.config/nvim
-		echo "[+] Setting Fish aliases"
-		echo "alias nv=nvim" >>~/.config/fish/config.fish
-	fi
-}
-
-install_apt_packages
+install_dnf_packages
 install_node
 install_deno
-install_alacritty
 install_starship
 install_atuin
 install_nerdfont
-install_helix
 install_zellij
 install_language_servers
 configure_fish
 configure_starship
 configure_vim
 configure_tmux
-configure_terminator
 configure_helix
-install_neovim
