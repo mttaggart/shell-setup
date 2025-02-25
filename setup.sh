@@ -14,7 +14,13 @@ install_dnf_packages() {
 		gcc \
 		pkgconf-pkg-config \
 		fontconfig \
-		fontconfig-devel
+		fontconfig-devel \
+		perl-FindBin \
+		perl-IPC-Cmd \
+		perl-File-Compare \
+		perl-File-Copy \
+		perl-Makefile-Parser
+		
 }
 
 install_rust() {
