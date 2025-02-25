@@ -119,6 +119,7 @@ install_deno
 install_starship
 install_atuin
 install_nerdfont
+install_rust
 install_zellij
 install_language_servers
 configure_fish
