@@ -78,6 +78,7 @@ install_language_servers() {
 
 configure_helix() {
 	echo "[+] Configuring Helix"
+	mkdir ~/.config/helix
 	cp -R ./Helix/* ~/.config/helix/
 }
 
